@@ -43,29 +43,29 @@ fun NavigateToHome() {
                 isAvailable = true
             ),
             Car(
-                brand = "BMW",
-                model = "M3",
-                costPerDay = 100,
-                logo = R.drawable.bwm_logo,
-                carImages = CarImages(thumbail = painterResource(id = R.drawable.bmw_thumbnail)),
+                brand = "Acura",
+                model = "...",
+                costPerDay = 80,
+                logo = R.drawable.acura_logo,
+                carImages = CarImages(thumbail = painterResource(id = R.drawable.acura_thumbnail)),
                 isAvailable = true
             ),
 
             Car(
-                brand = "BMW",
+                brand = "Bentley",
                 model = "M3",
-                costPerDay = 100,
+                costPerDay = 68,
                 logo = R.drawable.bwm_logo,
-                carImages = CarImages(thumbail = painterResource(id = R.drawable.bmw_thumbnail)),
+                carImages = CarImages(thumbail = painterResource(id = R.drawable.bentlye_thumbnail)),
                 isAvailable = true
             ),
 
             Car(
-                brand = "BMW",
+                brand = "Audi",
                 model = "M3",
-                costPerDay = 100,
-                logo = R.drawable.bwm_logo,
-                carImages = CarImages(thumbail = painterResource(id = R.drawable.bmw_thumbnail)),
+                costPerDay = 48,
+                logo = R.drawable.audi_logo,
+                carImages = CarImages(thumbail = painterResource(id = R.drawable.audi_thumbnail)),
                 isAvailable = true
             )
         ),
