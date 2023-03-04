@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="width_border_default">1</integer>
+    <integer name="height_button">36</integer>
+    <integer name="_14">14</integer>
+    <integer name="_16">16</integer>
+
+
+
+</resources>
