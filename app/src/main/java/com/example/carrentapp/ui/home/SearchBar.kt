@@ -18,33 +18,19 @@ import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.carrentapp.ui.theme.TextInputBackground
 import com.example.carrentapp.ui.theme.searchBarShape
-
-
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.carrentapp.R
 import com.example.carrentapp.ui.theme.PlaceholderColor
 
@@ -108,6 +94,13 @@ fun Searchbar(
                             text = "Rent my car",
                             style = MaterialTheme.typography.subtitle2,
                             color = PlaceholderColor,
+                            fontSize = 14.sp,
+                            fontFamily = FontFamily(
+                                Font(
+                                    resId = R.font.outfit,
+                                    weight = FontWeight.Normal,
+                                ),
+                            ),
                         )
                     }
                     innerTextField()

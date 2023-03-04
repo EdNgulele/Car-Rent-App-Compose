@@ -15,4 +15,11 @@ val TextInputBackground = Color(0xFFF0F0F0)
 val PlaceholderColor = Color(0x66191E2C)
 val backgroungColor = Color(0xFFF7F7F7)
 val BorderColor = Color(0xFFB9B6B6)
+val LinkColor = Color(0xFF0E63FF)
+val fontDarkColor = Color(0xFF000000)
+val fontGreyColor = Color(0xFF999999)
+
+
+
+
 

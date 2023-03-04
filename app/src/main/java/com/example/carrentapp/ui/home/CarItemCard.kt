@@ -17,13 +17,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.carrentapp.R
 import com.example.carrentapp.ui.data.model.Car
 import com.example.carrentapp.ui.data.model.CarImages
 import com.example.carrentapp.ui.theme.carCardShape
+import com.example.carrentapp.ui.theme.fontDarkColor
+import com.example.carrentapp.ui.theme.fontGreyColor
 import com.example.carrentapp.ui.theme.searchBarShape
 
 
@@ -33,9 +39,8 @@ fun CarItemCard(
 ) {
     Box(
         modifier = Modifier
-            .width(200.dp)
-            .height(220.dp)
-            .padding(8.dp)
+            .width(220.dp)
+            .height(200.dp)
             .background(
                 color = Color.White,
                 shape = MaterialTheme.shapes.carCardShape
@@ -66,11 +71,21 @@ fun CarItemCard(
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(start = 12.dp, end =12.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = car.brand)
+                Text(text = car.brand,
+                    fontSize = 16.sp,
+                    color = fontDarkColor,
+                    fontFamily = FontFamily(
+                        Font(
+                            resId = R.font.outfit_semi_bold,
+                            weight = FontWeight.Normal,
+                        ),
+                    )
+                )
                 Image(
                     modifier = Modifier
                         .height(24.dp)
@@ -80,17 +95,34 @@ fun CarItemCard(
                 )
             }
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(start = 5.dp, end = 5.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.Bottom
             ) {
-                Row() {
-                    Text(text = "$ ${car.costPerDay}")
-                    Text(text = "/Day")
+                Row(verticalAlignment = Alignment.Bottom) {
+                    Text(text = "$ ${car.costPerDay}",
+                        fontSize = 16.sp,
+                        color = fontDarkColor,
+                        fontFamily = FontFamily(
+                            Font(
+                                resId = R.font.outfit_semi_bold,
+                                weight = FontWeight.Normal,
+                            ),
+                        ))
+                    Text(text = "/Day",
+                        fontSize = 12.sp,
+                        color = fontGreyColor,
+                        fontFamily = FontFamily(
+                            Font(
+                                resId = R.font.outfit_semi_bold,
+                                weight = FontWeight.Normal,
+                            ),
+                        ))
                 }
 
                 Spacer(modifier = Modifier.width(50.dp))
