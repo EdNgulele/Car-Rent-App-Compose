@@ -19,6 +19,7 @@ import com.example.carrentapp.R
 import com.example.carrentapp.core.Dimensions
 import com.example.carrentapp.ui.components.AppButtons.OutlinedBorderButton
 import com.example.carrentapp.ui.theme.BorderColor
+import com.example.carrentapp.ui.theme.ButtonBlueColor
 import com.example.carrentapp.ui.theme.buttonShape
 
 object AppButtons {
@@ -29,12 +30,14 @@ object AppButtons {
         title: String,
         icon: Int? = null,
         onClick: () -> Unit,
+        isSelected: Boolean = false
     ) {
-        OutlinedButton(
+        val buttonColor = if (isSelected)  ButtonBlueColor else Color.Transparent
+            OutlinedButton(
             onClick = onClick,
             contentPadding = PaddingValues(),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Transparent,
+                backgroundColor = buttonColor,
             ),
             shape = MaterialTheme.shapes.buttonShape,
         ) {

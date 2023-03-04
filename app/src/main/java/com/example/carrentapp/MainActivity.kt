@@ -16,6 +16,7 @@ import com.example.carrentapp.ui.theme.CarRentAppTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             CarRentAppTheme {
               CarRentRoot()

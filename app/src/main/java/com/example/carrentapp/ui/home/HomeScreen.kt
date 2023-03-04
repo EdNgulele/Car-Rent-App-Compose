@@ -26,6 +26,7 @@ import com.example.carrentapp.ui.components.AppButtons
 import com.example.carrentapp.ui.data.model.Car
 import com.example.carrentapp.ui.data.model.CarImages
 import com.example.carrentapp.ui.data.model.VehicleType
+import com.example.carrentapp.ui.navigation.TopNavBar
 import com.example.carrentapp.ui.theme.*
 
 
@@ -83,7 +84,7 @@ fun HomeScreen(
             .fillMaxSize()
             .padding(top = 16.dp, start = 32.dp, end = 32.dp)
     ) {
-
+        TopNavBar()
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -103,7 +104,7 @@ fun HomeScreen(
                 items(vehicleTypes) { vehicleType ->
                     AppButtons.OutlinedBorderButton(
                         title = vehicleType,
-                        icon = R.drawable.cross,
+                        icon = R.drawable.white_cross,
                         onClick = {}
                     )
                 }
