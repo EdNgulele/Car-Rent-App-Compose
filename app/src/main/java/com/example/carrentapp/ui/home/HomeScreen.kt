@@ -97,6 +97,7 @@ fun HomeScreen(
 
         LazyRow(modifier = Modifier
             .fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
             content = {
                 val vehicleTypes = vehicleType.type
                 items(vehicleTypes) { vehicleType ->
