@@ -32,6 +32,7 @@ import com.example.carrentapp.ui.theme.*
 
 @Composable
 fun NavigateToHome() {
+    //TODO fetch data from viewModel
     HomeScreen(
         cars = listOf(
             Car(
