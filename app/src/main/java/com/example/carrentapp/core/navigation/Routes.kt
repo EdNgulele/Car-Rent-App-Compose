@@ -1,4 +1,4 @@
-package com.example.carrentapp.ui.navigation
+package com.example.carrentapp.core.navigation
 
 object Routes {
     const val HOME = "home"

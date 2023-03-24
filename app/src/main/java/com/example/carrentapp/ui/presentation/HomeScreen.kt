@@ -1,6 +1,5 @@
 package com.example.carrentapp.ui.home
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -12,45 +11,50 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import com.example.carrentapp.R
 import com.example.carrentapp.ui.components.AppButtons
-import com.example.carrentapp.ui.data.model.Car
-import com.example.carrentapp.ui.data.model.CarImages
-import com.example.carrentapp.ui.data.model.CarListState
-import com.example.carrentapp.ui.data.model.VehicleType
-import com.example.carrentapp.ui.navigation.TopNavBar
+import com.example.carrentapp.data.local.entity.CarEntity
+import com.example.carrentapp.data.local.entity.VehicleTypeEntity
+import com.example.carrentapp.data.local.repository.CarRepository
+import com.example.carrentapp.core.navigation.TopNavBar
+import com.example.carrentapp.ui.presentation.CarListViewModel
+import com.example.carrentapp.ui.presentation.CarViewModelFactory
 import com.example.carrentapp.ui.theme.*
 
 
 @Composable
 fun NavigateToHome() {
-    //TODO fetch data from viewModel
-    val viewModel: CarListViewModel = viewModel()
-    val state by viewModel.state.collectAsState(CarListState())
+
+    val context = LocalContext.current
+    val carRepository = remember { CarRepository(context) }
+    val carViewModel = viewModel<CarListViewModel>(factory = CarViewModelFactory(carRepository))
+
+    val carState by carViewModel.allCars.collectAsState(initial = emptyList())
+    val vehicleTypeState by carViewModel.allVehicleTypes.collectAsState(initial = emptyList())
+
 
     HomeScreen(
-        state = state
+        carState = carState,
+        vehicleTypeState = vehicleTypeState
     )
 }
 
-
+//TODO use string resource instead of hardcoded Strings
 
 @Composable
 fun HomeScreen(
-    state: CarListState,
+    carState: List<CarEntity>,
+    vehicleTypeState: List<VehicleTypeEntity>
 ) {
     Column(
         modifier = Modifier
@@ -74,9 +78,9 @@ fun HomeScreen(
             .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             content = {
-                items(state.vehicleTypes) { vehicleType ->
+                items(vehicleTypeState) { vehicleType ->
                     AppButtons.OutlinedBorderButton(
-                        title = vehicleType,
+                        title = vehicleType.type,
                         icon = R.drawable.white_cross,
                         onClick = {}
                     )
@@ -143,7 +147,7 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(10.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             content = {
-                items(state.cars) { carItem ->
+                items(carState) { carItem ->
                     CarItemCard(car = carItem)
                 }
             })

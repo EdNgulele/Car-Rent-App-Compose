@@ -2,40 +2,30 @@ package com.example.carrentapp.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.carrentapp.R
-import com.example.carrentapp.ui.data.model.Car
-import com.example.carrentapp.ui.data.model.CarImages
+import com.example.carrentapp.data.local.entity.CarEntity
 import com.example.carrentapp.ui.theme.carCardShape
 import com.example.carrentapp.ui.theme.fontDarkColor
 import com.example.carrentapp.ui.theme.fontGreyColor
-import com.example.carrentapp.ui.theme.searchBarShape
 
 
 @Composable
 fun CarItemCard(
-    car: Car,
+    car: CarEntity,
 ) {
     Box(
         modifier = Modifier
@@ -55,7 +45,7 @@ fun CarItemCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center,
             ) {
-                val thumbnailPainter = painterResource(id = car.carImages.thumbnailResourceId)
+                val thumbnailPainter = painterResource(id = car.thumbnailResourceId)
 
                 Image(
                     painter = thumbnailPainter,
@@ -143,18 +133,18 @@ fun CarItemCard(
 
 }
 
-@Preview(showBackground = true)
-@Composable
-fun CarItemCardPreview() {
-    val carMockupData = Car(
-        brand = "BMW",
-        model = "M3",
-        costPerDay = 100,
-        logo = R.drawable.bwm_logo,
-        carImages = CarImages(thumbnailResourceId= R.drawable.bmw_thumbnail),
-        isAvailable = true
-
-    )
-
-    CarItemCard(car = carMockupData)
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun CarItemCardPreview() {
+//    val carMockupData = Car(
+//        brand = "BMW",
+//        model = "M3",
+//        costPerDay = 100,
+//        logo = R.drawable.bwm_logo,
+//        carImages = CarImages(thumbnailResourceId= R.drawable.bmw_thumbnail),
+//        isAvailable = true
+//
+//    )
+//
+//    CarItemCard(car = carMockupData)
+//}

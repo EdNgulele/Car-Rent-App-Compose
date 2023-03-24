@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.carrentapp.ui.navigation.CarRentRoot
+import com.example.carrentapp.core.navigation.CarRentRoot
 import com.example.carrentapp.ui.theme.CarRentAppTheme
 
 class MainActivity : ComponentActivity() {

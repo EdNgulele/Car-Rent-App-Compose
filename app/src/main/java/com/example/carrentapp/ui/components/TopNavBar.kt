@@ -1,4 +1,4 @@
-package com.example.carrentapp.ui.navigation
+package com.example.carrentapp.core.navigation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
