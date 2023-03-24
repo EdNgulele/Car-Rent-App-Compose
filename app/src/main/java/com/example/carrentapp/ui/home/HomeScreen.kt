@@ -1,5 +1,6 @@
 package com.example.carrentapp.ui.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -9,6 +10,8 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,11 +23,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.carrentapp.R
 import com.example.carrentapp.ui.components.AppButtons
 import com.example.carrentapp.ui.data.model.Car
 import com.example.carrentapp.ui.data.model.CarImages
+import com.example.carrentapp.ui.data.model.CarListState
 import com.example.carrentapp.ui.data.model.VehicleType
 import com.example.carrentapp.ui.navigation.TopNavBar
 import com.example.carrentapp.ui.theme.*
@@ -33,51 +38,19 @@ import com.example.carrentapp.ui.theme.*
 @Composable
 fun NavigateToHome() {
     //TODO fetch data from viewModel
+    val viewModel: CarListViewModel = viewModel()
+    val state by viewModel.state.collectAsState(CarListState())
+
     HomeScreen(
-        cars = listOf(
-            Car(
-                brand = "BMW",
-                model = "M3",
-                costPerDay = 100,
-                logo = R.drawable.bwm_logo,
-                carImages = CarImages(thumbail = painterResource(id = R.drawable.bmw_thumbnail)),
-                isAvailable = true
-            ),
-            Car(
-                brand = "Acura",
-                model = "...",
-                costPerDay = 80,
-                logo = R.drawable.acura_logo,
-                carImages = CarImages(thumbail = painterResource(id = R.drawable.acura_thumbnail)),
-                isAvailable = true
-            ),
-
-            Car(
-                brand = "Bentley",
-                model = "M3",
-                costPerDay = 68,
-                logo = R.drawable.bwm_logo,
-                carImages = CarImages(thumbail = painterResource(id = R.drawable.bentlye_thumbnail)),
-                isAvailable = true
-            ),
-
-            Car(
-                brand = "Audi",
-                model = "M3",
-                costPerDay = 48,
-                logo = R.drawable.audi_logo,
-                carImages = CarImages(thumbail = painterResource(id = R.drawable.audi_thumbnail)),
-                isAvailable = true
-            )
-        ),
-        vehicleType = VehicleType(type = listOf("Luxury", "Mini Van", "Truck", "Limo"))
+        state = state
     )
 }
 
+
+
 @Composable
 fun HomeScreen(
-    cars: List<Car>,
-    vehicleType: VehicleType
+    state: CarListState,
 ) {
     Column(
         modifier = Modifier
@@ -101,8 +74,7 @@ fun HomeScreen(
             .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             content = {
-                val vehicleTypes = vehicleType.type
-                items(vehicleTypes) { vehicleType ->
+                items(state.vehicleTypes) { vehicleType ->
                     AppButtons.OutlinedBorderButton(
                         title = vehicleType,
                         icon = R.drawable.white_cross,
@@ -171,7 +143,7 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(10.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             content = {
-                items(cars) { carItem ->
+                items(state.cars) { carItem ->
                     CarItemCard(car = carItem)
                 }
             })

@@ -55,13 +55,14 @@ fun CarItemCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center,
             ) {
-                val painter = car.carImages.thumbail
+                val thumbnailPainter = painterResource(id = car.carImages.thumbnailResourceId)
+
                 Image(
-                    painter = painter,
+                    painter = thumbnailPainter,
                     contentDescription = null,
                     modifier = Modifier
                         .weight(1f, fill = false)
-                        .aspectRatio(painter.intrinsicSize.width / painter.intrinsicSize.height)
+                        .aspectRatio(ratio = thumbnailPainter.intrinsicSize.width / thumbnailPainter.intrinsicSize.height)
                         .fillMaxWidth(),
                     contentScale = ContentScale.Fit,
                 )
@@ -142,7 +143,6 @@ fun CarItemCard(
 
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun CarItemCardPreview() {
@@ -151,7 +151,7 @@ fun CarItemCardPreview() {
         model = "M3",
         costPerDay = 100,
         logo = R.drawable.bwm_logo,
-        carImages = CarImages(thumbail = painterResource(id = R.drawable.bmw_thumbnail)),
+        carImages = CarImages(thumbnailResourceId= R.drawable.bmw_thumbnail),
         isAvailable = true
 
     )

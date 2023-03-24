@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 
 data class CarImages(
-    val thumbail: Painter,
+    val thumbnailResourceId: Int,
     val bigImage: ImageVector? = null
 
 )
