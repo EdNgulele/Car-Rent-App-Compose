@@ -31,10 +31,4 @@ class CarListViewModel(private val repository: CarRepository) : ViewModel() {
             }
         }
     }
-
-
-
-    fun insert(car: CarEntity) = viewModelScope.launch {
-        repository.insert(car)
-    }
 }
